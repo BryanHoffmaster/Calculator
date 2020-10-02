@@ -3,24 +3,24 @@
 
 <div class="container">
 	<div class="calculator">
-		<div class="calculator__display">0</div>
+		<div #display class="calculator__display">0</div>
 		<div class="calculator__keys">
-			<button class="operator plus">+</button>
-			<button class="operator minus">&minus;</button>
-			<button class="operator times">&times;</button>
-			<button class="operator divide">&divide;</button>
-			<button class="number one">1</button>
-			<button class="number one">2</button>
-			<button class="number one">3</button>
-			<button class="number one">4</button>
-			<button class="number one">5</button>
-			<button class="number one">6</button>
-			<button class="number one">7</button>
-			<button class="number one">8</button>
-			<button class="number one">9</button>
-			<button class="operator period">.</button>
-			<button class="operator clear">C</button>
-			<button class="operator equals">=</button>
+			<button #buttonPlus (click)="onButtonClick(buttonPlus)" class="operator plus">+</button>
+			<button #buttonMinus (click)="onButtonClick(buttonMinus)" class="operator minus">&minus;</button>
+			<button #buttonTimes (click)="onButtonClick(buttonTimes)" class="operator times">&times;</button>
+			<button #buttonDivide (click)="onButtonClick(buttonDivide)" class="operator divide">&divide;</button>
+			<button #buttonOne (click)="onButtonClick(buttonOne)" class="number one">1</button>
+			<button #buttonOne (click)="onButtonClick(buttonOne)" class="number one">2</button>
+			<button #buttonThree (click)="onButtonClick(buttonThree)" class="number one">3</button>
+			<button #buttonFour (click)="onButtonClick(buttonFour)" class="number one">4</button>
+			<button #buttonFive (click)="onButtonClick(buttonFive)" class="number one">5</button>
+			<button #buttonSix (click)="onButtonClick(buttonSix)" class="number one">6</button>
+			<button #buttonSeven (click)="onButtonClick(buttonSeven)" class="number one">7</button>
+			<button #buttonEight (click)="onButtonClick(buttonEight)" class="number one">8</button>
+			<button #buttonNine (click)="onButtonClick(buttonNine)" class="number one">9</button>
+			<button #buttonPeriod (click)="onButtonClick(buttonPeriod)" class="operator period">.</button>
+			<button #buttonClear (click)="onButtonClick(buttonClear)" class="operator clear">C</button>
+			<button #buttonEquals (click)="onButtonClick(buttonEquals)" class="operator equals">=</button>
 		</div>
 	</div>
 </div>
