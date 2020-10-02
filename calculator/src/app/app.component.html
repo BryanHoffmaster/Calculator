@@ -3,12 +3,12 @@
 
 <div class="container">
 	<div class="calculator">
-		<div #display class="calculator__display">0</div>
+		<div #display class="calculator__display">{{displayText}}</div>
 		<div class="calculator__keys">
-			<button (click)="onClickOperator(operator.add)" class="operator plus">+</button>
-			<button (click)="onClickOperator(operator.subtract)" class="operator minus">&minus;</button>
-			<button (click)="onClickOperator(operator.multiply)" class="operator times">&times;</button>
-			<button (click)="onClickOperator(operator.divide)" class="operator divide">&divide;</button>
+			<button (click)="onClickOperator(operators.add)" class="operator plus">+</button>
+			<button (click)="onClickOperator(operators.subtract)" class="operator minus">&minus;</button>
+			<button (click)="onClickOperator(operators.multiply)" class="operator times">&times;</button>
+			<button (click)="onClickOperator(operators.divide)" class="operator divide">&divide;</button>
 			<button (click)="onClickNumber('1')" class="number one">1</button>
 			<button (click)="onClickNumber('2')" class="number one">2</button>
 			<button (click)="onClickNumber('3')" class="number one">3</button>
@@ -19,9 +19,9 @@
 			<button (click)="onClickNumber('8')" class="number one">8</button>
 			<button (click)="onClickNumber('9')" class="number one">9</button>
 			<button (click)="onClickNumber('0')" class="number one">0</button>
-			<button (click)="onClickNumber('.')" class="operator period">.</button>
-			<button (click)="onClickOperator(operator.clear)" class="operator clear">C</button>
-			<button (click)="onClickOperator(operator.equals)" class="operator equals">=</button>
+			<!-- <button (click)="onClickNumber('.')" class="operator period">.</button> -->
+			<button (click)="onClickOperator(operators.clear)" class="operator clear">C</button>
+			<button (click)="onClickOperator(operators.equals)" class="operator equals">=</button>
 		</div>
 	</div>
 </div>
