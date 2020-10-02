@@ -32,10 +32,14 @@ export class AppComponent {
 	/** DOM reference to the calculator display element. */
 	@ViewChild('display', { static: true }) display: ElementRef;
 
-	onClickNumber(element: HTMLButtonElement): void {
-		const value = element.innerText;
+	/**
+	 * Handle the click event for number buttons.
+	 * @param stringValue The value passed in string form.
+	 */
+	onClickNumber(stringValue: string): void {
+		const value = parseInt(stringValue);
 		const display = this.display.nativeElement;
-		const atZero = display.innerText === '0';
+		const atZero = value === 0;
 
 		if (atZero) {
 			display.innerText = value;
@@ -43,9 +47,13 @@ export class AppComponent {
 			display.innerText += value;
 		}
 
-		this.lastValue = parseInt(display.innerText);
+		this.lastValue = value;
 	}
 
+	/**
+	 * Handles the click for the operator buttons.
+	 * @param operator The operator value of the clicked
+	 */
 	onClickOperator(operator: Operator): void {
 		this.currentValue = parseInt(this.display?.nativeElement?.innerText);
 		switch (operator) {
