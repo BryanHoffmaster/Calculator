@@ -23,6 +23,9 @@ export class AppComponent {
 	/** Public reference to the operators enum. */
 	operator = Operator;
 
+	/** The last operator action. */
+	private operatorAction: Operator;
+
 	/** Holds the last value set by the calculator. */
 	private lastValue: number;
 
@@ -39,15 +42,15 @@ export class AppComponent {
 	onClickNumber(stringValue: string): void {
 		const value = parseInt(stringValue);
 		const display = this.display.nativeElement;
-		const atZero = value === 0;
+		const valueIsZero = display.innerText === '0';
 
-		if (atZero) {
+		if (valueIsZero) {
 			display.innerText = value;
 		} else {
 			display.innerText += value;
 		}
 
-		this.lastValue = value;
+		this.currentValue = parseInt(display.innerText);
 	}
 
 	/**
@@ -55,10 +58,10 @@ export class AppComponent {
 	 * @param operator The operator value of the clicked
 	 */
 	onClickOperator(operator: Operator): void {
-		this.currentValue = parseInt(this.display?.nativeElement?.innerText);
 		switch (operator) {
 			case Operator.add:
-				this.add();
+				this.operatorAction = Operator.add;
+				this.setCurrentValue();
 				break;
 			case Operator.subtract:
 				this.subtract();
@@ -78,14 +81,29 @@ export class AppComponent {
 			default:
 				break;
 		}
+	}
 
-		// At the end of every operation, reset the value of the display
+	private setCurrentValue(): void {
+		// move current to last
+		this.lastValue = this.currentValue;
+		// move current to zero
+		this.currentValue = 0;
+		// display the zero
 		this.display.nativeElement.innerText = '0';
 	}
 
 	private add(): void {
 		if (!this.lastValue || !this.currentValue) return;
-		console.log('operator clicked');
+
+		const addedValue = (this.currentValue + this.lastValue);
+		// display the added value
+		this.display.nativeElement.innerText = addedValue.toString();
+
+		// set it as the current value
+		this.currentValue = addedValue;
+
+		// reset the action
+		this.operatorAction = null;
 	}
 
 	private subtract(): void {
@@ -103,9 +121,24 @@ export class AppComponent {
 		console.log('operator clicked');
 	}
 
+	/** Performs the current operator action against the last and current value. */
 	private equals(): void {
 		if (!this.lastValue || !this.currentValue) return;
-		console.log('operator clicked');
+		switch (this.operatorAction) {
+			case Operator.add:
+				this.add();
+				break;
+			case Operator.subtract:
+				break;
+			case Operator.multiply:
+				break;
+			case Operator.clear:
+				break;
+			case Operator.equals:
+				break;
+			default:
+				break;
+		}
 	}
 
 	private clear(): void {
