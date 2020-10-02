@@ -76,6 +76,7 @@
 			true,
 			"single"
 		],
+		"radix": false,
 		"trailing-comma": false,
 		"no-conflicting-lifecycle": true,
 		"no-host-metadata-property": true,
